@@ -1,0 +1,24 @@
+{
+    "name": "visuellverstehen/t3googleanalytics",
+    "type": "typo3-cms-extension",
+    "description": "",
+    "license": [],
+    "authors": [
+        {
+            "name": "visuellverstehen",
+            "email": "kontakt@visuellverstehen.de",
+            "homepage": "https://www.visuellverstehen.de"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://composer.typo3.org/"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "VV\\T3googleanalytics\\": "Classes/"
+        }
+    }
+}
