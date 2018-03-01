@@ -7,6 +7,7 @@ googleAnalyticsPage {
         debug = 0
         no_cache = 1
         contentObjectExceptionHandler = 0
+        sourceopt.enabled = 0
 
         disableAllHeaderCode = 1
         additionalHeaders {
