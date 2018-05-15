@@ -4,8 +4,6 @@ if (!defined('TYPO3_MODE')) {
     die('Access denied.');
 }
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile('t3googleanalytics', 'Configuration/', 't3googleanalytics');
-
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('sys_template', [
     'google_analytics_tracking_id' => [
         'exclude' => true,
