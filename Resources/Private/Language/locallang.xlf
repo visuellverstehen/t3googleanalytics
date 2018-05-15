@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.0">
+     <file source-language="en" datatype="plaintext" original="messages" date="2018-05-14T10:55:51Z" product-name="t3googleanalytics">
+         <header/>
+         <body>
+            <trans-unit id="tx_t3googleanalytics.google_analytics_tracking_id" xml:space="preserve">
+                <source>Google Analytics Tracking-ID</source>
+            </trans-unit>
+            <trans-unit id="tx_t3googleanalytics.tab_title" xml:space="preserve">
+                <source>Google Analytics</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
