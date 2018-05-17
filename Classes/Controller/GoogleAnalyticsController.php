@@ -14,18 +14,40 @@ class GoogleAnalyticsController extends ActionController
     public function writeConfiguration(array $parameter)
     {
         if (TYPO3_MODE === 'FE') {
-            $parameter['footerData']['inject-t3googleanalytics-configuration'] = '
-                <script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=' . $this->getTrackingId() . '" async></script>
-                <script type="text/javascript">
-                   window.dataLayer = window.dataLayer || [];
-                   function gtag(){dataLayer.push(arguments);}
-                   gtag("js", new Date());
-                   gtag("config", "' . $this->getTrackingId() . '", {
-                     "transport_type": "beacon",
-                     "anonymize_ip": true
-                   });
-               </script>
-            ';
+            $parameter['footerData']['inject-t3googleanalytics-configuration'] = "
+                <script>
+                    var googleAnalyticsTrackingId = '" . $this->getTrackingId() . "',
+                      googleAnalyticsDisabledCookie = 'google-analytics-disable-' + googleAnalyticsTrackingId;
+
+                    // Function to disable Google Analytics
+                    var googleAnalyticsDisable = function() {
+                      document.cookie = googleAnalyticsDisabledCookie + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+                      window[googleAnalyticsDisable] = true;
+                    };
+
+                    // Function to enable Google Analytics
+                    var googleAnalyticsEnable = function() {
+                      document.cookie = googleAnalyticsDisabledCookie + '=true; expires=Thu, 01 Jan 1970 00:00:01 UTC; path=/';
+                      window[googleAnalyticsDisable] = false;
+                    };
+
+                    // Load and start Google Analytics if not disabled
+                    if (document.cookie.indexOf(googleAnalyticsDisabledCookie + '=true') === -1) {
+                      var googleAnalyticsScript = document.createElement('script');
+                      googleAnalyticsScript.onload = function () {
+                        window.dataLayer = window.dataLayer || [];
+                        function gtag(){dataLayer.push(arguments);}
+                        gtag('js', new Date());
+                        gtag('config', googleAnalyticsTrackingId, {
+                          'transport_type': 'beacon',
+                          'anonymize_ip': true
+                        });
+                      };
+                      googleAnalyticsScript.src = 'https://www.googletagmanager.com/gtag/js?id=' + googleAnalyticsTrackingId;
+                      document.head.appendChild(googleAnalyticsScript);
+                    }
+                </script>
+            ";
         }
     }
 
