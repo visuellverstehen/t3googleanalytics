@@ -14,21 +14,18 @@ class GoogleAnalyticsController extends ActionController
     public function writeConfiguration(array $parameter)
     {
         if (TYPO3_MODE === 'FE') {
-            // Prevent tracking bots
-            if (!isset($_SERVER['HTTP_USER_AGENT']) || strpos($_SERVER['HTTP_USER_AGENT'], 'Speed Insights') === false) {
-                $parameter['footerData']['inject-t3googleanalytics-configuration'] = '
-                    <script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=' . $this->getTrackingId() . '" async></script>
-                    <script type="text/javascript">
-                       window.dataLayer = window.dataLayer || [];
-                       function gtag(){dataLayer.push(arguments);}
-                       gtag("js", new Date());
-                       gtag("config", "' . $this->getTrackingId() . '", {
-                         "transport_type": "beacon",
-                         "anonymize_ip": true
-                       });
-                   </script>
-                ';
-            }
+            $parameter['footerData']['inject-t3googleanalytics-configuration'] = '
+                <script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=' . $this->getTrackingId() . '" async></script>
+                <script type="text/javascript">
+                   window.dataLayer = window.dataLayer || [];
+                   function gtag(){dataLayer.push(arguments);}
+                   gtag("js", new Date());
+                   gtag("config", "' . $this->getTrackingId() . '", {
+                     "transport_type": "beacon",
+                     "anonymize_ip": true
+                   });
+               </script>
+            ';
         }
     }
 
