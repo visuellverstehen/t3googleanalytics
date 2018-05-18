@@ -19,6 +19,6 @@ jobs:
             # Upload
             TAG_MESSAGE=`git tag -n10 -l $TRAVIS_TAG | sed 's/^[0-9.]*[ ]*//g'`
             echo "Uploading release ${TRAVIS_TAG} to TER"
-            # ./vendor/bin/ter-client upload t3googleanalytics . -u "$TYPO3_ORG_USERNAME" -p "$TYPO3_ORG_PASSWORD" -m "$TAG_MESSAGE"
-            ls -al
+            # /home/travis/.composer/vendor/bin/ter-client upload t3googleanalytics . -u "$TYPO3_ORG_USERNAME" -p "$TYPO3_ORG_PASSWORD" -m "$TAG_MESSAGE"
+            ls -al /home/travis/.composer/vendor/bin
           fi;

@@ -27,7 +27,6 @@
     },
     "scripts": {
         "extension-release": [
-            "@extension-build",
             "rm .gitignore",
             "rm .travis.yml",
             "rm -rf .git",
