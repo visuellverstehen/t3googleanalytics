@@ -29,10 +29,10 @@
         "extension-release": [
             "@extension-build",
             "rm .gitignore",
-            "rm .git",
-            "rm typo3",
-            "rm vendor",
-            "rm .travis.yml"
+            "rm .travis.yml",
+            "rm -rf .git",
+            "rm -rf typo3",
+            "rm -rf vendor"
         ]
     }
 }
