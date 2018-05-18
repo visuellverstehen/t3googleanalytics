@@ -6,7 +6,6 @@ php:
 jobs:
   include:
     - stage: publish in TER
-      if: tag IS present
       script:
         - |
           if [ -n "$TYPO3_ORG_USERNAME" ] && [ -n "$TYPO3_ORG_PASSWORD" ]; then
@@ -15,6 +14,8 @@ jobs:
             composer require --dev helhum/ter-client dev-master
             # Cleanup before we upload
             git reset --hard HEAD && git clean -fx
+            # Build extension files
+            composer extension-release
             # Upload
             TAG_MESSAGE=`git tag -n10 -l $TRAVIS_TAG | sed 's/^[0-9.]*[ ]*//g'`
             echo "Uploading release ${TRAVIS_TAG} to TER"

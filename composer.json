@@ -24,5 +24,15 @@
         "psr-4": {
             "VV\\T3googleanalytics\\": "Classes/"
         }
+    },
+    "scripts": {
+        "extension-release": [
+            "@extension-build",
+            "rm .gitignore",
+            "rm .git",
+            "rm typo3",
+            "rm vendor",
+            "rm .travis.yml"
+        ]
     }
 }
