@@ -1,3 +1,7 @@
 language: php
 
-script: ls -al
+jobs:
+  include:
+    - stage: publish in TER
+      if: tag IS present
+      script: ls -al
