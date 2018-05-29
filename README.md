@@ -1,7 +1,7 @@
 # t3googleanalytics
 An easy and basic Google Analytics extension for TYPO3.
 
-[![Build Status](https://travis-ci.org/visuellverstehen/t3googleanalytics.svg?branch=master)](https://travis-ci.org/visuellverstehen/t3googleanalytics)
+[![Build Status](https://travis-ci.org/visuellverstehen/t3googleanalytics.svg)](https://travis-ci.org/visuellverstehen/t3googleanalytics)
 
 ## How to use
 1. Install TYPO3 extension via [composer](https://packagist.org/packages/visuellverstehen/t3googleanalytics), [TER](https://extensions.typo3.org/extension/t3googleanalytics/) or download and install manually.
