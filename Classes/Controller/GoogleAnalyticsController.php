@@ -13,7 +13,7 @@ class GoogleAnalyticsController extends ActionController
      */
     public function writeConfiguration(array $parameter)
     {
-        if (TYPO3_MODE === 'FE') {
+        if (TYPO3_MODE === 'FE' && $this->getTrackingId() !== '') {
             $parameter['footerData']['inject-t3googleanalytics-configuration'] = "
                 <script>
                     var googleAnalyticsTrackingId = '" . $this->getTrackingId() . "',
