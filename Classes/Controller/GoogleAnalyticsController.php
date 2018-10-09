@@ -6,6 +6,7 @@ use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 class GoogleAnalyticsController extends ActionController
 {
@@ -56,8 +57,9 @@ class GoogleAnalyticsController extends ActionController
     protected function getTrackingId(): string
     {
         $trackingId = '';
-        $sysTemplate = $GLOBALS['TSFE']->cObj->getRecords('sys_template', [
-            'pidInList' => $GLOBALS['TSFE']->cObj->getData('leveluid:0'),
+        $tsfe = $this->getTypoScriptFrontendController();
+        $sysTemplate = $tsfe->cObj->getRecords('sys_template', [
+            'pidInList' => $tsfe->cObj->getData('leveluid:0'),
             'max' => 1,
         ]);
 
@@ -74,5 +76,13 @@ class GoogleAnalyticsController extends ActionController
     protected function getPageRenderer(): PageRenderer
     {
         return GeneralUtility::makeInstance(PageRenderer::class);
+    }
+
+    /**
+     * @return TypoScriptFrontendController
+     */
+    protected function getTypoScriptFrontendController(): TypoScriptFrontendController
+    {
+        return $GLOBALS['TSFE'] ?? GeneralUtility::makeInstance(TypoScriptFrontendController::class);
     }
 }
