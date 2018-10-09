@@ -2,7 +2,7 @@
     "name": "visuellverstehen/t3googleanalytics",
     "type": "typo3-cms-extension",
     "description": "An easy and basic Google Analytics extension for TYPO3.",
-    "license": [],
+    "license": "MIT",
     "authors": [
         {
             "name": "visuellverstehen",
