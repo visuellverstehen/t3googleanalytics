@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/visuellverstehen/t3googleanalytics.svg)](https://travis-ci.org/visuellverstehen/t3googleanalytics)
+[![Downloads](https://img.shields.io/packagist/dt/visuellverstehen/t3googleanalytics.svg)](https://packagist.org/packages/visuellverstehen/t3googleanalytics)
 
 # t3googleanalytics
 An easy and basic Google Analytics extension for TYPO3.
