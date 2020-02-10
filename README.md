@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/visuellverstehen/t3googleanalytics.svg)](https://travis-ci.org/visuellverstehen/t3googleanalytics)
+[![Actions](https://github.com/visuellverstehen/t3googleanalytics/workflows/TER/badge.svg)](https://github.com/visuellverstehen/t3googleanalytics/actions)
 [![Downloads](https://img.shields.io/packagist/dt/visuellverstehen/t3googleanalytics.svg)](https://packagist.org/packages/visuellverstehen/t3googleanalytics)
 
 # t3googleanalytics
