@@ -19,6 +19,11 @@
             "VV\\T3googleanalytics\\": "Classes/"
         }
     },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "t3googleanalytics"
+        }
+    },
     "scripts": {
         "extension-release": [
             "rm .gitignore",
