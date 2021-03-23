@@ -8,11 +8,10 @@ $EM_CONF[$_EXTKEY] = [
     'author_email' => 'kontakt@visuellverstehen.de',
     'author_company' => 'visuellverstehen',
     'state' => 'stable',
-    'clearCacheOnLoad' => true,
-    'version' => '0.3.2',
+    'version' => '0.4.0',
     'constraints' => [
         'depends' => [
-            'typo3' => '7.6.0-9.5.99',
+            'typo3' => '7.6.0-10.4.99',
         ]
     ]
 ];

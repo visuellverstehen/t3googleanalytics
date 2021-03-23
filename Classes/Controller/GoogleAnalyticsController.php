@@ -5,10 +5,9 @@ namespace VV\T3googleanalytics\Controller;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
-use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
-class GoogleAnalyticsController extends ActionController
+class GoogleAnalyticsController
 {
     /**
      * @param array $parameter
@@ -56,18 +55,28 @@ class GoogleAnalyticsController extends ActionController
      */
     protected function getTrackingId(): string
     {
-        $trackingId = '';
         $tsfe = $this->getTypoScriptFrontendController();
         $sysTemplate = $tsfe->cObj->getRecords('sys_template', [
             'pidInList' => $tsfe->cObj->getData('leveluid:0'),
             'max' => 1,
         ]);
 
+        // Returns the tracking id from the sys_template record
         if (isset($sysTemplate[0]['google_analytics_tracking_id'])) {
-            $trackingId = $sysTemplate[0]['google_analytics_tracking_id'];
+            return $sysTemplate[0]['google_analytics_tracking_id'];
         }
 
-        return $trackingId;
+        // Returns the tracking id from the runThroughTemplatesPostProcessing hook
+        if (isset($tsfe->tmpl->setup_constants['google_analytics_tracking_id'])) {
+            return $tsfe->tmpl->setup_constants['google_analytics_tracking_id'];
+        }
+
+        // Returns the tracking id from the site configuration settings
+        if (method_exists($tsfe, 'getSite')) {
+            $settings = $tsfe->getSite()->getConfiguration()['settings'];
+
+            return isset($settings['googleAnalyticsTrackingId']) ? $settings['googleAnalyticsTrackingId'] : '';
+        }
     }
 
     /**
