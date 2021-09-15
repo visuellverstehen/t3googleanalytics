@@ -23,9 +23,6 @@ jobs:
       - name: Set version in ext_emconf.php
         run: /home/runner/.composer/vendor/bin/tailor set-version --no-docs -- "$(cat TAG_VERSION)"
 
-      - name: Cleanup before we upload
-        run: git reset --hard HEAD && git clean -fx
-
       - name: Create tag message
         run: echo `git tag -n10 -l $(git describe --abbrev=0 --tags) | sed 's/^[0-9.]*[ ]*//g'` >> TAG_MESSAGE
 
