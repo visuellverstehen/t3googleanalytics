@@ -21,7 +21,7 @@ jobs:
         run: echo `git describe --tags --abbrev=0` >> TAG_VERSION
 
       - name: Set version in ext_emconf.php
-        run: /home/runner/.composer/vendor/bin/tailor set-version --no-docs -- $(cat TAG_VERSION)
+        run: /home/runner/.composer/vendor/bin/tailor set-version --no-docs -- "$(cat TAG_VERSION)"
 
       - name: Cleanup before we upload
         run: git reset --hard HEAD && git clean -fx
