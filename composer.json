@@ -23,13 +23,5 @@
         "typo3/cms": {
             "extension-key": "t3googleanalytics"
         }
-    },
-    "scripts": {
-        "extension-release": [
-            "rm .gitignore",
-            "rm -rf .git",
-            "rm -rf typo3",
-            "rm -rf vendor"
-        ]
     }
 }

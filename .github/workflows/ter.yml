@@ -15,7 +15,13 @@ jobs:
         run: sudo update-alternatives --set php /usr/bin/php7.4
 
       - name: Install requirements
-        run: composer global require --dev helhum/ter-client dev-master
+        run: composer global require --dev typo3/tailor ^1.3
+
+      - name: Create tag version
+        rune: echo `git describe --tags --abbrev=0` >> TAG_VERSION
+
+      - name: Set version in ext_emconf.php
+        run: /home/runner/.composer/vendor/bin/tailor set-version --no-docs -- $(cat TAG_VERSION)
 
       - name: Cleanup before we upload
         run: git reset --hard HEAD && git clean -fx
@@ -23,8 +29,5 @@ jobs:
       - name: Create tag message
         run: echo `git tag -n10 -l $(git describe --abbrev=0 --tags) | sed 's/^[0-9.]*[ ]*//g'` >> TAG_MESSAGE
 
-      - name: Build extension files
-        run: composer extension-release
-
       - name: Publish to TER
-        run: /home/runner/.composer/vendor/bin/ter-client upload t3googleanalytics . -u "${{ secrets.TYPO3_ORG_USERNAME }}" -p "${{ secrets.TYPO3_ORG_PASSWORD }}" -m "$(cat TAG_MESSAGE)"
+        run: /home/runner/.composer/vendor/bin/tailor ter:publish --comment "$(cat TAG_MESSAGE)" "$(cat TAG_VERSION)" "t3googleanalytics"
